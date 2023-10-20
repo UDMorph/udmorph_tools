@@ -28,17 +28,21 @@ with open(lexfile) as lex:
 	for row in tsvreader:
 		upos = ''
 		feats = []
+		if len(row) < 2:
+			continue
 		for um in row[2].split(';'):
 			if um in convs.keys():
 				ud = convs[um]
-				if "=" in ud:
+				if ud == '_':
+					nodo = 1 # Ignore things with explicitly no translation		
+				elif "=" in ud:
 					feats.append(ud)		
 				else:
 					if upos != '':
 						warnings.warn('Double upos: ' + row[2] + ' < ' + ud)
 					upos = ud
 			elif um != row[0]:
-				warnings.warn('No conversion for: ' + '\t'.join(row))
+				warnings.warn('No conversion for: ' + um)
 		if upos == '':
 			upos = '_'
 		if feats == []:
