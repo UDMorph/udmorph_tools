@@ -47,4 +47,4 @@ with open(lexfile) as lex:
 			upos = '_'
 		if feats == []:
 			feats.append('_')
-		print(row[1] + "\t" + row[0] + "\t" + upos + "\t" + '|'.join(feats))
+		print(row[1] + "\t" + row[0] + "\t" + upos + "\t" + '|'.join(feats) + "\t" + row[2])
