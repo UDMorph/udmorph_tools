@@ -1,2 +1,3 @@
 # udmorph_tools
-Conversion and verification tools for UDMorph
+
+This repository provides helpful tools to work with UDMorph data-sets.
