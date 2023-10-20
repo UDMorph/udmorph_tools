@@ -32,19 +32,20 @@ with open(lexfile) as lex:
 			continue
 		for um in row[2].split(';'):
 			if um in convs.keys():
-				ud = convs[um]
-				if ud == '_':
-					nodo = 1 # Ignore things with explicitly no translation		
-				elif "=" in ud:
-					feats.append(ud)		
-				else:
-					if upos != '':
-						warnings.warn('Double upos: ' + row[2] + ' < ' + ud)
-					upos = ud
+				for ud in convs[um].split('#'):
+					if ud == '_':
+						nodo = 1 # Ignore things with explicitly no translation		
+					elif "=" in ud:
+						feats.append(ud)		
+					else:
+						if upos != '':
+							warnings.warn('Double upos: ' + row[2] + ' < ' + ud)
+						upos = ud
 			elif um != row[0]:
 				warnings.warn('No conversion for: ' + um)
 		if upos == '':
 			upos = '_'
 		if feats == []:
 			feats.append('_')
+		feats.sort()
 		print(row[1] + "\t" + row[0] + "\t" + upos + "\t" + '|'.join(feats) + "\t" + row[2])
