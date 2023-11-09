@@ -53,7 +53,7 @@ print(str(totcnt) + ' tokens')
 print('---------------')
 
 basename = args.corpus
-tmp = args.input.split('/')
+tmp = os.path.abspath(args.input).split('/')
 while basename == 'git' or basename == 'git-files' or basename == 'conllu' or basename == 'data' or basename == '':
     basename = tmp.pop()
 

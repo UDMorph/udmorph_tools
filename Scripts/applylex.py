@@ -8,6 +8,7 @@ dir = os.path.dirname(sys.argv[0])
 argParser = argparse.ArgumentParser()
 argParser.add_argument("-v", "--verbose", help="verbose mode", action='store_true')
 argParser.add_argument("-a", "--addalt", help="add altMorph", action='store_true')
+argParser.add_argument("-p", "--parsealt", help="add alternatives at feature level", action='store_true')
 argParser.add_argument("--debug", help="debugging mode", action='store_true')
 argParser.add_argument("-f", "--file", help="conllu file to enrich")
 argParser.add_argument("-l", "--lex", help="lexicon file to apply")
@@ -32,6 +33,10 @@ with open(lexfile) as lex:
 			lexicon[row[0]] = []
 		lexicon[row[0]].append(row)
 		
+lastopt = 1
+if args.parsealt:
+	lastopt = 100		
+		
 with open(conllu) as file:
 	tsvreader = csv.reader(file, delimiter="\t")
 	for row in tsvreader:
@@ -41,13 +46,22 @@ with open(conllu) as file:
 				word = word.lower()
 			if word in lexicon.keys():
 				opts = lexicon[word]
-				row[2] = opts[0][1]
-				row[3] = opts[0][2]
-				row[4] = opts[0][3]
-				row[5] = opts[0][4]
+				lemmas = {}
+				uposs = {}
+				xposs = {}
+				featss = {}
+				for opt in lexicon[word][0:lastopt]:
+					lemmas[opt[1]] = 1
+					uposs[opt[2]] = 1
+					xposs[opt[3]] = 1
+					featss[opt[4]] = 1
+				row[2] = '/'.join(lemmas.keys())
+				row[3] = '/'.join(uposs.keys())
+				row[4] = '/'.join(xposs.keys())
+				row[5] = '/'.join(featss.keys())
 				if len(opts) > 1:
 					if args.addalt:
-						alts = 'altMorph=' + '#'.join('\\t'.join(opt) for opt in opts[1::])
+						alts = 'altMorph=' + '#'.join('\\t'.join(opt) for opt in opts[1:])
 					else:
 						alts = 'lexCnt=' + str(len(opts))
 					if row[9] != '_':
