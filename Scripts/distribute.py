@@ -12,9 +12,10 @@ args, moreargs = argParser.parse_known_args()
 def load_conllu_file(data_file):
     with open(data_file, "r", encoding="utf-8") as f:
         data = f.read()
-        return load_conllu(data)
+        fileid = data_file.split("/").pop().replace(".conllu", "")
+        return load_conllu(data, fileid)
 
-def load_conllu(string):
+def load_conllu(string, fileid = ""):
     sentences = string.strip().split("\n\n")
     sents = []
     for sentence in sentences:
@@ -31,7 +32,8 @@ def load_conllu(string):
                 continue
             if re.match(r"^(\d+)-(\d+)\t", line):
                 continue
-            token = {}
+            if fileid != "":
+                line = line.replace("tokId=", "fileId="++"|tokId=")
             sent['tokens'].append(line)
             sent['count'] = len(sent['tokens'])
         if 'text' in sent.keys() and len(sent['tokens']):
