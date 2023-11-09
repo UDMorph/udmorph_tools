@@ -19,7 +19,7 @@ def load_conllu(string, fileid = ""):
     sentences = string.strip().split("\n\n")
     sents = []
     for sentence in sentences:
-        sent = {"tokens": []}
+        sent = {"tokens": [], "fileid": fileid}
         lines = sentence.strip().split("\n")
         for line in lines:
             if line[0:9] == '# text = ':
@@ -32,8 +32,6 @@ def load_conllu(string, fileid = ""):
                 continue
             if re.match(r"^(\d+)-(\d+)\t", line):
                 continue
-            if fileid != "":
-                line = line.replace("tokId=", "fileId="+fileid+"|tokId=")
             sent['tokens'].append(line)
             sent['count'] = len(sent['tokens'])
         if 'text' in sent.keys() and len(sent['tokens']):
@@ -81,6 +79,8 @@ for sent in sents:
         if sd[c] < sz[c]:
             dest = c
     fs[dest].write("# text = " + sent['text'] + "\n")
+    if sent['fileid'] != "":
+        fs[dest].write("# file = " + sent['fileid'] + "\n")
     fs[dest].write("\n".join(sent['tokens']) + "\n\n")
     sd[dest] = sd[dest] + len(sent['tokens'])
     ss[dest] = ss[dest] + 1
