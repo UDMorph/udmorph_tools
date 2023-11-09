@@ -1,7 +1,5 @@
-import lxml.etree as etree
 import argparse
-import os, sys, requests, json, re, urllib.parse
-import glob, random
+import re, glob, random
 
 argParser = argparse.ArgumentParser()
 argParser.add_argument("-v", "--verbose", help="verbose mode", action='store_true')
@@ -52,10 +50,11 @@ for file in glob.glob(args.input + '/*.conllu'):
 random.shuffle(sents)
 print(str(len(sents)) + ' sentences')
 print(str(totcnt) + ' tokens')
+print('---------------')
 
 basename = args.corpus
 tmp = args.input.split('/')
-while basename == 'git' or basename == 'conllu' or basename == 'data' or basename == '':
+while basename == 'git' or basename == 'git-files' or basename == 'conllu' or basename == 'data' or basename == '':
     basename = tmp.pop()
 
 fs = {}
