@@ -1,5 +1,5 @@
 import argparse
-import re, glob, random
+import re, glob, random, os
 
 argParser = argparse.ArgumentParser()
 argParser.add_argument("-v", "--verbose", help="verbose mode", action='store_true')
