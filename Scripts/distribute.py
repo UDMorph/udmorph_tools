@@ -78,6 +78,8 @@ for sent in sents:
     for c in fs.keys():
         if sd[c] < sz[c]:
             dest = c
+    if "id" in sent.keys():
+        fs[dest].write("# sent_id = " + sent['id'] + "\n")
     fs[dest].write("# text = " + sent['text'] + "\n")
     if sent['fileid'] != "":
         fs[dest].write("# file = " + sent['fileid'] + "\n")
