@@ -33,7 +33,7 @@ def load_conllu(string, fileid = ""):
             if re.match(r"^(\d+)-(\d+)\t", line):
                 continue
             if fileid != "":
-                line = line.replace("tokId=", "fileId="++"|tokId=")
+                line = line.replace("tokId=", "fileId="+fileid+"|tokId=")
             sent['tokens'].append(line)
             sent['count'] = len(sent['tokens'])
         if 'text' in sent.keys() and len(sent['tokens']):
