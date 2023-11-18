@@ -33,7 +33,8 @@ sents = False
 
 if args.input:
     if hasattr(tagger, "inputs") and args.input in tagger.inputs:
-        print("Using native parsing for " + args.input)
+        if args.debug:
+            print("Using native parsing for " + args.input)
         tagger.input = args.input
     else:
         if args.input == "conllu":
