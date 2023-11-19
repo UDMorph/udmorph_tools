@@ -1,0 +1,62 @@
+$	PUNCT		Punctuation
+ABBR	X		abbreviation
+ADJ	ADJ		adjective
+ADV	ADV		adverb
+ASP	PART		aspectual marker
+AUX	AUX		auxilliary verb
+CCOP	AUX		class-indicating copulative subject concord
+CDEM	DET		class-indicating demonstrative
+CDEMCOP			class-indicating demonstrative copulative
+CN	NOUN		class-indicating nominal prefix
+CO			class-indicating object concord
+CPOSS			class-indicating possessive concord
+CS			class-indicating subject concord
+ENUM			enumerative
+IDEO	INTJ		ideophone
+INT	INTJ		interjection
+JUNC	CONJ		conjunction
+MNEG	PART		 negative morpheme
+N	NOUN		noun
+N01	NOUN	NounClass=Bantu1
+N02	NOUN	NounClass=Bantu2
+N03	NOUN	NounClass=Bantu3
+N04	NOUN	NounClass=Bantu4
+N05	NOUN	NounClass=Bantu5
+N06	NOUN	NounClass=Bantu6
+N07	NOUN	NounClass=Bantu7
+N08	NOUN	NounClass=Bantu8
+N09	NOUN	NounClass=Bantu9
+N10	NOUN	NounClass=Bantu10
+N11	NOUN	NounClass=Bantu11
+N12	NOUN	NounClass=Bantu12
+N13	NOUN	NounClass=Bantu13
+N14	NOUN	NounClass=Bantu14
+NPP	PROPN		place and brand name
+NUM	NUM		numerative
+PART	PART		particle
+PROEMP	PRON		emphatic pronoun
+PROPOSS	PRON	PronType=Prs|Poss=Yes		possessive pronoun
+PROQUANT	PRON		quantitative pronoun
+QUE			question word
+TENSE	PART		tense marker
+V	VERB		verbal
+VCOP	AUX		copulative verb
+CONJ	CONJ		
+ZM	PUNCT		
+ZE	PUNCT		
+RK			
+ZPL	PUNCT		
+ZPR	PUNCT		
+PROPOSSPERS	PRON	PronType=Prs	
+CSNEUT			
+CD			
+NLOC			
+VAUX	AUX		
+POS			
+PUNCT	PUNCT		
+LOC			
+QUANT	PRON		
+DEM	DET		
+REL			
+P	ADP		
+			
