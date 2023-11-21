@@ -2,6 +2,10 @@
 
 This repository provides helpful tools to work with UDMorph data-sets.
 
+## udm_tagger.py
+
+The script udm_tagger.py is a central hub to provide a uniform input/output workflow across several taggers. It is the workflow used by many of the tagger in the UDMorph GUI. The metatagger takes an argument `--tagger`, which will run a subprocess with the actual tagger - such as udm_udpipe1.py for UDPIPE1, and udm_stanza.py for Stanza. The primary input types are plain text and CoNLL-U, and the main output is in CoNLL-U. 
+
 ## unimorph2ud.py
 
 The script unimorph2ud.py is a python script that can convert a [UniMorph](https://unimorph.github.io/) lexicon into a UD style lexicon, that UDMorph can 
