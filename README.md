@@ -1,6 +1,6 @@
 # udmorph_tools
 
-This repository provides helpful tools to work with UDMorph data-sets.
+This repository provides helpful tools and resources to work with UDMorph data-sets.
 
 ## udm_tagger.py
 
